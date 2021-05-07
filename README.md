@@ -1,2 +1,4 @@
 # tdxtc50.log
-logstash for tdxtc50
+使用logstash处理通达信tc50日志
+
+
