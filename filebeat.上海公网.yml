@@ -5,7 +5,7 @@
   paths:
     - D:\tdx\tdxtc50\log\2*.log
 
-  exclude_lines: ["连接信息:10.168.xx.251","连接信息:10.168.xx.252","连接信息:127.0.0.1"]
+  exclude_lines: ["连接信息:10.1xx.xx.251","连接信息:10.1xx.xx.252","连接信息:127.0.0.1"]
 
   fields:
     sitename: shanghai
