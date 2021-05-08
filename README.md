@@ -1,5 +1,13 @@
 # 使用logstash处理通达信tc50日志
 
+如何快速回答以下问题，一段时间内（比如最近半小时）：
+- 哪些客户委托最多？
+- 登录、委托耗时多少？
+- 哪些客户端版本使用最多？
+- 哪些报错信息最多？
+- 哪些站点哪些机器业务量最多？
+
+
 以下内容是笔记，非最佳实践。比如假如重做可能会把普通和两融日志放在一起而非分开索引。。。
 
 > ELK版本是5.x。更高版本filebeat配置略有变化，请参考官方文档。
@@ -8,7 +16,7 @@
 
 > 为避免filebeat直连造成logstash连接过多，部分内网站点采用redis中转。
 
-> 公网站点日志采集，filebeat直连logstash压缩并ssl加密。
+> 公网站点日志采集，filebeat直连logstash，压缩并ssl加密。
 
 > filebeat：过滤无用日志，多行合并，添加站点标识sitename，发redis或者logstash
 
@@ -19,7 +27,7 @@
 openssl req -x509 -batch -nodes -days 36500 -newkey rsa:2048 -keyout logstash.key -out logstash.crt -config my_openssl.cnf
 ```
 
-- 安装filebeat服务的脚本install-service-filebeat.ps1，略作修改：
+- 安装filebeat服务的脚本install-service-filebeat.ps1，略作修改，清空fbdata下的文件将重新传输日志：
 ```
 # set-executionpolicy remotesigned
 
