@@ -8,9 +8,9 @@
 
 > 为避免filebeat直连造成logstash连接过多，部分内网站点采用redis中转。
 
-> 公网站点日志采集，采用直连logstash并ssl加密。
+> 公网站点日志采集，filebeat直连logstash压缩并ssl加密。
 
-> filebeat负责：简单过滤无用日志，多行合并，添加站点标识sitename，再发redis或者logstash
+> filebeat：过滤无用日志，多行合并，添加站点标识sitename，发redis或者logstash
 
 > 最早是用服务器命名规则用区分站点。在filebeat添加的fields字段sitename更方便。
 
