@@ -6,7 +6,9 @@ ELK版本是5.x。更高版本filebeat配置略有变化，请参考官方文档
 
 日志由filebeat采集，发给logstash处理，入库elasticsearch和kafka
 
-为避免filebeat直连造成logstash连接过多，部分内网站点采用redis中转。公网站点日志采集，采用直连logstash并ssl加密。
+为避免filebeat直连造成logstash连接过多，部分内网站点采用redis中转。
+
+公网站点日志采集，采用直连logstash并ssl加密。
 
 filebeat负责：简单过滤无用日志，多行合并，添加站点标识sitename，再发redis或者logstash
 
