@@ -1,5 +1,4 @@
-# tdxtc50.log
-使用logstash处理通达信tc50日志
+# 使用logstash处理通达信tc50日志
 
 以下内容是笔记，而非最佳实践。
 
