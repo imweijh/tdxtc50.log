@@ -1,0 +1,23 @@
+﻿filebeat.prospectors:
+- input_type: log
+  encoding: gbk
+  document_type: tdxtc50
+  paths:
+    - D:\tdx\tdxtc50\log\2*.log
+
+  exclude_lines: ["连接信息:10.168.xx.251","连接信息:10.168.xx.252","连接信息:127.0.0.1"]
+
+  fields:
+    sitename: shanghai
+  fields_under_root: true
+
+  multiline.pattern: '^[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3} '
+  multiline.negate: true
+  multiline.match: after
+
+tags: ["shanghai"]
+
+output.logstash:
+  hosts: ["logstash.domain.name:5040"]
+  compression_level: 7
+  ssl.certificate_authorities: ["D:\\filebeat\\logstash.crt"]
