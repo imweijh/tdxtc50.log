@@ -14,14 +14,12 @@ filebeat负责：简单过滤无用日志，多行合并，添加站点标识sit
 
 最早是用服务器命名规则用区分站点。在filebeat添加的fields字段sitename更方便。
 
-生成证书：
+- 生成证书：找台linux，修改 my_openssl.cnf 中的 alt_names 生成自用证书。
 ```
 openssl req -x509 -batch -nodes -days 36500 -newkey rsa:2048 -keyout logstash.key -out logstash.crt -config my_openssl.cnf
 ```
-找台linux，修改 my_openssl.cnf 中的 alt_names 生成自用证书。
 
-
-安装filebeat服务的脚本install-service-filebeat.ps1，略作修改：
+- 安装filebeat服务的脚本install-service-filebeat.ps1，略作修改：
 ```
 # set-executionpolicy remotesigned
 
