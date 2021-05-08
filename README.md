@@ -1,6 +1,6 @@
 # 使用logstash处理通达信tc50日志
 
-以下内容是笔记，非最佳实践。现在做，可能会把普通和两融日志放在一起而非分开索引。
+以下内容是笔记，非最佳实践。比如假如重做可能会把普通和两融日志放在一起而非分开索引。。。
 
 ELK版本是5.x。更高版本filebeat配置略有变化，请参考官方文档。
 
@@ -18,6 +18,6 @@ filebeat负责：简单过滤无用日志，多行合并，添加站点标识sit
 ```
 openssl req -x509 -batch -nodes -days 36500 -newkey rsa:2048 -keyout logstash.key -out logstash.crt -config my_openssl.cnf
 ```
-找台linux，修改 my_openssl.cnf 的 alt_names 生成自用证书。
+找台linux，修改 my_openssl.cnf 中的 alt_names 生成自用证书。
 
 
