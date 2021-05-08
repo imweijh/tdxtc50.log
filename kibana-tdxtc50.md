@@ -33,3 +33,11 @@ timelion 各地站点登录耗时-集中交易
 委托最多的营业部客户
 ![image](https://user-images.githubusercontent.com/23710675/117529633-25c92480-b00b-11eb-8ef1-065cb4f65096.png)
 
+主机日志量
+![image](https://user-images.githubusercontent.com/23710675/117529814-6f663f00-b00c-11eb-9102-b966973f6bb3.png)
+
+错误信息
+![image](https://user-images.githubusercontent.com/23710675/117529862-afc5bd00-b00c-11eb-9b1e-5342e605cfc2.png)
+
+
+
