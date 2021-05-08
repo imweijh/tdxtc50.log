@@ -17,8 +17,7 @@ filebeat负责：简单过滤无用日志，多行合并，添加站点标识sit
 生成证书：
 ```
 openssl req -x509 -batch -nodes -days 36500 -newkey rsa:2048 -keyout logstash.key -out logstash.crt -config my_openssl.cnf
-
 ```
-修改 my_openssl.cnf 的 alt_names 适配自用。
+找台linux，修改 my_openssl.cnf 的 alt_names 生成自用证书。
 
 
