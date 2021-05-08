@@ -5,8 +5,9 @@
 - 登录、委托耗时多少？
 - 哪些客户端版本使用最多？
 - 哪些报错信息最多？
-- 哪些站点哪些机器业务量最多？
+- 哪些站点哪些机器承载的业务量最多？
 
+ELK可以很好回答以上问题。
 
 以下内容是笔记，非最佳实践。比如假如重做可能会把普通和两融日志放在一起而非分开索引。。。
 
@@ -30,6 +31,7 @@ openssl req -x509 -batch -nodes -days 36500 -newkey rsa:2048 -keyout logstash.ke
 - 安装filebeat服务的脚本install-service-filebeat.ps1，略作修改，清空fbdata下的文件将重新传输日志：
 ```
 # set-executionpolicy remotesigned
+# 如果安装服务的脚本执行报错，可能要先运行上面这行命令
 
 # delete service if it already exists
 if (Get-Service filebeat -ErrorAction SilentlyContinue) {
