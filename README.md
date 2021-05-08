@@ -21,3 +21,28 @@ openssl req -x509 -batch -nodes -days 36500 -newkey rsa:2048 -keyout logstash.ke
 找台linux，修改 my_openssl.cnf 中的 alt_names 生成自用证书。
 
 
+安装filebeat服务的脚本install-service-filebeat.ps1，略作修改：
+```
+# set-executionpolicy remotesigned
+
+# delete service if it already exists
+if (Get-Service filebeat -ErrorAction SilentlyContinue) {
+  $service = Get-WmiObject -Class Win32_Service -Filter "name='filebeat'"
+  $service.StopService()
+  Start-Sleep -s 1
+  $service.delete()
+}
+
+$workdir = Split-Path $MyInvocation.MyCommand.Path
+
+# create new service
+New-Service -name filebeat `
+  -displayName filebeat `
+  -binaryPathName "`"$workdir\\filebeat.exe`" -c `"$workdir\\filebeat.yml`" -path.home `"$workdir`" -path.data `"$workdir\\fbdata`""
+
+```
+
+
+
+
+
