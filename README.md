@@ -53,7 +53,8 @@ New-Service -name filebeat `
 ![image](https://user-images.githubusercontent.com/23710675/117530060-ad179780-b00d-11eb-9258-7457eacbd062.png)
 
 
-ELK、Elastic Stack、logstash 等是 Elasticsearch BV.公司商标
+Elastic Stack、logstash、elasticsearch、kibana、filebeat 等是 Elasticsearch BV.公司商标
+
 https://www.elastic.co/legal/trademarks
 
 
