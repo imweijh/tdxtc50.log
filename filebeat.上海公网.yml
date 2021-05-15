@@ -1,4 +1,4 @@
-﻿filebeat.prospectors:
+filebeat.prospectors:
 - input_type: log
   encoding: gbk
   enabled: true
