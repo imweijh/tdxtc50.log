@@ -1,0 +1,36 @@
+filebeat.prospectors:
+
+- input_type: log
+  encoding: gbk
+  enabled: true
+  document_type: tdxtc2r
+  paths:
+    - D:\tdx\tdxtc50期信\log\2*.log
+  exclude_lines: ["连接信息:xx.xx.x.xxx","连接信息:xx.xx.x.xxx","连接信息:127.0.0.1"]
+  fields:
+    sitename: shanghai2r
+    tdxtype: tdxlog
+  fields_under_root: true
+
+  multiline.pattern: '^[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3} '
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  encoding: gbk
+  enabled: true
+  document_type: tdxtc2r
+
+  paths:
+    - D:\tdx\tdxtc50期信\log\2*.sec
+  fields:
+    sitename: shanghai2r
+    tdxtype: tdxsec
+  fields_under_root: true
+
+output.redis:
+  hosts: ["redisserver:port"]
+  key: tdxtc2rkey
+  datatype: list
+  db: 1
+  timeout: 5
