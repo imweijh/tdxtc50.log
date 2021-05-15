@@ -30,7 +30,7 @@ filebeat.prospectors:
   fields_under_root: true
 
 output.redis:
-  hosts: ["1xx.xx.xx.xx1:7379"]
+  hosts: ["redisserver:port"]
   # password: "my_password"
   key: tdxtc50key
   datatype: list
