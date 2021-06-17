@@ -1,0 +1,63 @@
+filebeat.prospectors:
+
+# Each - is a prospector. Most options can be set at the prospector level, so
+# you can use different prospectors for various configurations.
+# Below are the prospector specific configurations.
+
+- input_type: log
+  encoding: gbk
+  enabled: true
+  document_type: tdxtc50
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    #- /var/log/*.log
+    - D:\tdx\tdxtc50\log\2*.log
+
+  # Exclude lines. A list of regular expressions to match. It drops the lines that are
+  # matching any regular expression from the list.
+  exclude_lines: ["连接信息:10.168.xx.xxx","连接信息:127.0.0.1","连接信息:10.168.xx.xxx"]
+
+  #exclude_files: [".gz$"]
+
+  # Optional additional fields. These field can be freely picked
+  # to add additional information to the crawled log files for filtering
+  #fields:
+  #  level: debug
+  #  review: 1
+  fields:
+    sitename: tdxsj2r
+    tdxtype: tdxlog
+  fields_under_root: true
+
+  ### Multiline options
+  multiline.pattern: '^[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3} '
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  encoding: gbk
+  enabled: true
+  document_type: tdxtc50
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - D:\tdx\tdxtc50\log\2*.sec
+  fields:
+    sitename: tdxsj2r
+    tdxtype: tdxsec
+  fields_under_root: true
+
+#================================ General =====================================
+
+#tags: ["service-X", "web-tier"]
+tags: ["tdxsj"]
+
+# Optional fields that you can specify to add additional information to the
+# output.
+#fields:
+#  env: staging
+
+#================================ Outputs =====================================
+output.logstash:
+  hosts: ["logstashserver:5040"]
+  compression_level: 7
+  ssl.certificate_authorities: ["D:\\filebeat\\logstash.crt"]
